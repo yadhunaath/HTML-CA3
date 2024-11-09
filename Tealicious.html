@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tea-Licious</title>
+  <style>
+* {
+  font-family: monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+}
+
+header {
+  background-image: url(tea.jpg);
+  background-size: cover;
+  color: white;
+  padding: 10px;
+  text-align: right;
+  font-size: xx-large;
+  height: 100px;
+}
+
+header nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  text-align: right;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h3, p {
+  margin-bottom: 10px;
+}
+
+.products-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.products-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.product-item {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+}
+
+.product-item img {
+  width: 100%;
+  max-width: 150px;
+}
+
+button {
+  background-color: gray;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: black;
+}
+
+.cart-section {
+  padding: 20px;
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-section li {
+  margin: 10px 0;
+}
+
+.order-form-section {
+  padding: 20px;
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-form-section input,
+.order-form-section textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.order-form-section button {
+  background-color: gray;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.order-form-section button:hover {
+  background-color: black;
+}
+
+.thank-you-section {
+  text-align: center;
+  padding: 20px;
+}
+
+.thank-you-section button {
+  background-color: gray;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.thank-you-section button:hover {
+  background-color: black;
+}
+
+.checkout-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: grey;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.checkout-btn:hover {
+  background-color: black;
+}
+footer {
+  background-image: url(tea.jpg);
+  background-size: cover;
+  padding: 20px;
+  height: 200px;
+}
+footer:container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  img {
+    float: left;
+  }
+  
+  .text {
+    color: white;
+    font-size: 20px;
+    padding-left: 20px;
+    text-align: right;
+  }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <img src="logo1.jpg" style="height: 150px; width: 150px;">
+      <nav>
+        <a href="#products">Shop</a>
+        <a href="#cart" id="cart-link">Cart (<span id="cart-count">0</span>)</a>
+        <a href="#order-form">Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="products" class="products-section">
+    <h2>Our Tea Powders</h2>
+    <div class="products-container">
+      <div class="product-item" data-id="1">
+        <img src="boba.jpg" alt="boba">
+        <h3>Bobo Tea Powder</h3>
+        <p>₹1050 / 500g</p>
+        <button class="add-to-cart" data-name="boba" data-price="1050">Add to Cart</button>
+      </div>
+      <div class="product-item" data-id="2">
+        <img src="sulaimaini.jpg" alt="Tea Powder B">
+        <h3>Sulaimani Tea Powder</h3>
+        <p>₹350 / 500g</p>
+        <button class="add-to-cart" data-name="Sulaimani" data-price="350">Add to Cart</button>
+      </div>
+      <div class="product-item" data-id="3">
+        <img src="kash.jpg" alt="Tea Powder C">
+        <h3>Kashmiri Tea Powder</h3>
+        <p>₹450 / 500g</p>
+        <button class="add-to-cart" data-name="Kashmiri" data-price="450">Add to Cart</button>
+      </div>
+      <div class="product-item" data-id="3">
+        <img src="green.jpg" alt="Tea Powder C">
+        <h3>Green Tea Powder</h3>
+        <p>₹300 / 500g</p>
+        <button class="add-to-cart" data-name="green" data-price="300">Add to Cart</button>
+      </div>
+      <div class="product-item" data-id="3">
+        <img src="ice.jpg" alt="Tea Powder C">
+        <h3>Ice Tea Powder</h3>
+        <p>₹500 / 500g</p>
+        <button class="add-to-cart" data-name="Tea Powder C" data-price="450">Add to Cart</button>
+      </div>
+      <div class="product-item" data-id="3">
+        <img src="black.png" alt="Tea Powder C">
+        <h3>Black Tea Powder</h3>
+        <p>₹150 / 500g</p>
+        <button class="add-to-cart" data-name="Tea Powder C" data-price="450">Add to Cart</button>
+      </div>
+      <div class="product-item" data-id="3">
+        <img src="masala.jpg" alt="Tea Powder C">
+        <h3>Masala Tea Powder</h3>
+        <p>₹250 / 500g</p>
+        <button class="add-to-cart" data-name="Tea Powder C" data-price="450">Add to Cart</button>
+      </div>
+      <div class="product-item" data-id="3">
+        <img src="lemon.jpg" alt="Tea Powder C">
+        <h3>Lemon Tea Powder</h3>
+        <p>₹400 / 500g</p>
+        <button class="add-to-cart" data-name="Tea Powder C" data-price="450">Add to Cart</button>
+      </div>
+      <div class="product-item" data-id="3">
+        <img src="jash.jpg" alt="Tea Powder C">
+        <h3>Jasmine Tea Powder</h3>
+        <p>₹400 / 500g</p>
+        <button class="add-to-cart" data-name="Tea Powder C" data-price="450">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="cart" class="cart-section" style="display: none;">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <p id="total-amount">Total: ₹0</p>
+    <a href="#order-form" class="checkout-btn">Proceed to Checkout</a>
+  </section>
+
+  <section id="order-form" class="order-form-section">
+    <h2>Order Form</h2>
+    <form id="orderForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address" placeholder="Enter your address" required></textarea>
+
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+      <button type="submit">Place Order</button>
+    </form>
+  </section>
+
+  <section id="thank-you" class="thank-you-section" style="display: none;">
+    <h2>Thank You for Your Order!</h2>
+    <p>Your order has been placed successfully. We will deliver your tea powder soon!</p>
+    <button onclick="resetOrder()">Go to Homepage</button>
+  </section>
+<footer>
+  
+  <div class="container">
+    <div class="image">
+      <img src="logo1.jpg" height="150px" width="150px">
+    </div>
+    <div class="text">
+        <h1 style="text-align: right;">REACH US AT:</h1>
+        <p style="text-align: right;">Mobile No:+91 6239-720115</p>
+        <p style="text-align: right;">Mail ID:<a href="mailto:tealicious2024@tea.com" style="color: white;">tealicious2024@tea.com</a></p>
+    </div>
+  </div><br>
+</div>
+</footer>
+
+  <script>
+    let cart = [];
+
+function addToCart(productName, price) {
+  const product = { name: productName, price: price };
+  cart.push(product);
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const cartLink = document.getElementById('cart-link');
+  const cartCount = document.getElementById('cart-count');
+  const cartItems = document.getElementById('cart-items');
+  const totalAmount = document.getElementById('total-amount');
+
+  cartCount.textContent = cart.length;
+
+  cartItems.innerHTML = '';
+  let total = 0;
+  cart.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = `${item.name} - ₹${item.price}`;
+    cartItems.appendChild(li);
+    total += item.price;
+  });
+
+  totalAmount.textContent = `Total: ₹${total}`;
+}
+
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+addToCartButtons.forEach(button => {
+  button.addEventListener('click', (event) => {
+    const name = event.target.getAttribute('data-name');
+    const price = parseInt(event.target.getAttribute('data-price'));
+    addToCart(name, price);
+  });
+});
+
+document.getElementById('orderForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const address = document.getElementById('address').value;
+  const phone = document.getElementById('phone').value;
+
+  if (cart.length === 0) {
+    alert('Please add items to your cart!');
+    return;
+  }
+
+  if (!name || !address || !phone) {
+    alert('Please fill out all fields!');
+    return;
+  }
+
+  document.getElementById('order-form').style.display = 'none';
+  document.getElementById('thank-you').style.display = 'block';
+
+  console.log('Order placed by:', name);
+  console.log('Address:', address);
+  console.log('Phone:', phone);
+  console.log('Cart:', cart);
+});
+
+function resetOrder() {
+  cart = [];
+  updateCartUI();
+  document.getElementById('thank-you').style.display = 'none';
+  document.getElementById('order-form').style.display = 'block';
+}
+
+  </script>
+</body>
+</html>
